@@ -3,25 +3,12 @@
 #include <sstream>
 #include <numeric>
 #include <chrono>
-#include <string>
 #include <vector>
 #include <opencv2/opencv.hpp>
 #include <dirent.h>
 #include "NvInfer.h"
 #include "cuda_runtime_api.h"
 #include "logging.h"
-//add include file
-#include "videoSource.h"
-#include "videoOutput.h"
-#include "cudaFont.h"
-#include <signal.h>
-
-
-#ifdef HEADLESS
-	#define IS_HEADLESS() "headless"	// run without display
-#else
-	#define IS_HEADLESS() (const char*)NULL
-#endif
 
 #define CHECK(status) \
     do\
@@ -292,11 +279,99 @@ const float color_list[2][3] =
 {
     {0.000, 0.447, 0.741},
     {0.850, 0.325, 0.098},
+    // {0.929, 0.694, 0.125},
+    // {0.494, 0.184, 0.556},
+    // {0.466, 0.674, 0.188},
+    // {0.301, 0.745, 0.933},
+    // {0.635, 0.078, 0.184},
+    // {0.300, 0.300, 0.300},
+    // {0.600, 0.600, 0.600},
+    // {1.000, 0.000, 0.000},
+    // {1.000, 0.500, 0.000},
+    // {0.749, 0.749, 0.000},
+    // {0.000, 1.000, 0.000},
+    // {0.000, 0.000, 1.000},
+    // {0.667, 0.000, 1.000},
+    // {0.333, 0.333, 0.000},
+    // {0.333, 0.667, 0.000},
+    // {0.333, 1.000, 0.000},
+    // {0.667, 0.333, 0.000},
+    // {0.667, 0.667, 0.000},
+    // {0.667, 1.000, 0.000},
+    // {1.000, 0.333, 0.000},
+    // {1.000, 0.667, 0.000},
+    // {1.000, 1.000, 0.000},
+    // {0.000, 0.333, 0.500},
+    // {0.000, 0.667, 0.500},
+    // {0.000, 1.000, 0.500},
+    // {0.333, 0.000, 0.500},
+    // {0.333, 0.333, 0.500},
+    // {0.333, 0.667, 0.500},
+    // {0.333, 1.000, 0.500},
+    // {0.667, 0.000, 0.500},
+    // {0.667, 0.333, 0.500},
+    // {0.667, 0.667, 0.500},
+    // {0.667, 1.000, 0.500},
+    // {1.000, 0.000, 0.500},
+    // {1.000, 0.333, 0.500},
+    // {1.000, 0.667, 0.500},
+    // {1.000, 1.000, 0.500},
+    // {0.000, 0.333, 1.000},
+    // {0.000, 0.667, 1.000},
+    // {0.000, 1.000, 1.000},
+    // {0.333, 0.000, 1.000},
+    // {0.333, 0.333, 1.000},
+    // {0.333, 0.667, 1.000},
+    // {0.333, 1.000, 1.000},
+    // {0.667, 0.000, 1.000},
+    // {0.667, 0.333, 1.000},
+    // {0.667, 0.667, 1.000},
+    // {0.667, 1.000, 1.000},
+    // {1.000, 0.000, 1.000},
+    // {1.000, 0.333, 1.000},
+    // {1.000, 0.667, 1.000},
+    // {0.333, 0.000, 0.000},
+    // {0.500, 0.000, 0.000},
+    // {0.667, 0.000, 0.000},
+    // {0.833, 0.000, 0.000},
+    // {1.000, 0.000, 0.000},
+    // {0.000, 0.167, 0.000},
+    // {0.000, 0.333, 0.000},
+    // {0.000, 0.500, 0.000},
+    // {0.000, 0.667, 0.000},
+    // {0.000, 0.833, 0.000},
+    // {0.000, 1.000, 0.000},
+    // {0.000, 0.000, 0.167},
+    // {0.000, 0.000, 0.333},
+    // {0.000, 0.000, 0.500},
+    // {0.000, 0.000, 0.667},
+    // {0.000, 0.000, 0.833},
+    // {0.000, 0.000, 1.000},
+    // {0.000, 0.000, 0.000},
+    // {0.143, 0.143, 0.143},
+    // {0.286, 0.286, 0.286},
+    // {0.429, 0.429, 0.429},
+    // {0.571, 0.571, 0.571},
+    // {0.714, 0.714, 0.714},
+    // {0.857, 0.857, 0.857},
+    // {0.000, 0.447, 0.741},
+    // {0.314, 0.717, 0.741},
+    // {0.50, 0.5, 0}
 };
 
-// static void draw_objects(const cv::Mat& bgr, const std::vector<Object>& objects, std::string f)
-static void draw_objects(const cv::Mat& bgr, const std::vector<Object>& objects)
+static void draw_objects(const cv::Mat& bgr, const std::vector<Object>& objects, std::string f)
 {
+    // static const char* class_names[] = {
+    //     "person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck", "boat", "traffic light",
+    //     "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat", "dog", "horse", "sheep", "cow",
+    //     "elephant", "bear", "zebra", "giraffe", "backpack", "umbrella", "handbag", "tie", "suitcase", "frisbee",
+    //     "skis", "snowboard", "sports ball", "kite", "baseball bat", "baseball glove", "skateboard", "surfboard",
+    //     "tennis racket", "bottle", "wine glass", "cup", "fork", "knife", "spoon", "bowl", "banana", "apple",
+    //     "sandwich", "orange", "broccoli", "carrot", "hot dog", "pizza", "donut", "cake", "chair", "couch",
+    //     "potted plant", "bed", "dining table", "toilet", "tv", "laptop", "mouse", "remote", "keyboard", "cell phone",
+    //     "microwave", "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase", "scissors", "teddy bear",
+    //     "hair drier", "toothbrush"
+    // };
     static const char* class_names[] = {
         "uav", "anchor"
     };
@@ -388,44 +463,14 @@ void doInference(IExecutionContext& context, float* input, float* output, const 
     CHECK(cudaFree(buffers[outputIndex]));
 }
 
-bool signal_recieved = false;
-
-void sig_handler(int signo)
-{
-	if( signo == SIGINT )
-	{
-		LogVerbose("received SIGINT, Exit!\n");
-		signal_recieved = true;
-	}
-}
-
 int main(int argc, char** argv) {
-    commandLine cmdLine(argc, argv, IS_HEADLESS());  //usage: ./imagenet v4l2:///dev/video0 my_video.mp4  
-    int frame_cnt = 0;
+    cudaSetDevice(DEVICE);
+    // create a model using the API directly and serialize it to a stream
+    char *trtModelStream{nullptr};
+    size_t size{0};
 
-	if(signal(SIGINT, sig_handler) == SIG_ERR)
-		LogError("can't catch SIGINT\n");
-    videoSource* input = videoSource::Create(cmdLine, ARG_POSITION(0));
-    if(!input){
-        LogError("YOLOX:  failed to create input stream\n");
-        return 1;
-    }
-    while(!signal_recieved) {
-        uchar3* image = NULL;           //image type 
-        if(!input->Capture(&image, 1000)){
-            // check for EOS
-            if(!input->IsStreaming())
-                break;
-            LogError("imagenet: failed to capture next frame\n");
-            continue;
-        }
-
-        cudaSetDevice(DEVICE);
-        // create a model using the API directly and serialize it to a stream
-        char *trtModelStream{nullptr};
-        size_t size{0};
-
-        const std::string engine_file_path {"/home/jetson/project/YOLOX/demo/TensorRT/cpp/yolox_nano_uav.engine"};//usage：./exe engine_file_path -i input_image_path
+    if (argc == 4 && std::string(argv[2]) == "-i") {//usage：./exe engine_file_path -i input_image_path
+        const std::string engine_file_path {argv[1]};
         std::ifstream file(engine_file_path, std::ios::binary);
         if (file.good()) {
             file.seekg(0, file.end);
@@ -436,55 +481,61 @@ int main(int argc, char** argv) {
             file.read(trtModelStream, size);
             file.close();
         }
-        
-        // const std::string input_image_path {argv[3]};
-
-
-        IRuntime* runtime = createInferRuntime(gLogger);
-        assert(runtime != nullptr);
-        ICudaEngine* engine = runtime->deserializeCudaEngine(trtModelStream, size);
-        assert(engine != nullptr); 
-        IExecutionContext* context = engine->createExecutionContext();
-        assert(context != nullptr);
-        delete[] trtModelStream;
-        auto out_dims = engine->getBindingDimensions(1);
-        auto output_size = 1;
-        for(int j=0;j<out_dims.nbDims;j++) {
-            output_size *= out_dims.d[j];
-        }
-        static float* prob = new float[output_size];
-
-        // cv::Mat img = cv::imread(input_image_path);//input bgr image
-        cv::Mat img(input->GetHeight(), input->GetWidth(), CV_8UC3, image);
-        // std::cout << input->GetWidth() << "," << input->GetHeight() << std::endl;
-        cv::cvtColor(img, img, cv::COLOR_RGB2BGR);
-        cv::imwrite("test" + std::to_string(frame_cnt++) + ".jpg", img);
-        int img_w = img.cols;
-        int img_h = img.rows;
-        cv::Mat pr_img = static_resize(img);
-        std::cout << pr_img.size() <<std::endl;//(416,416)padding，非padding是16：9的比例
-        std::cout << "blob image" << std::endl;
-
-        float* blob;
-        blob = blobFromImage(pr_img);//unsigned -> float
-        float scale = std::min(INPUT_W / (img.cols*1.0), INPUT_H / (img.rows*1.0));
-
-        // run inference
-        auto start = std::chrono::system_clock::now();
-        doInference(*context, blob, prob, output_size, pr_img.size());//out:prob
-        std::cout<<output_size<<std::endl;
-        auto end = std::chrono::system_clock::now();
-        std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms" << std::endl;
-
-        std::vector<Object> objects;
-        decode_outputs(prob, objects, scale, img_w, img_h);
-        draw_objects(img, objects);
-        // delete the pointer to the float
-        delete blob;
-        // destroy the engine
-        context->destroy();
-        engine->destroy();
-        runtime->destroy();
+    } else {
+        std::cerr << "arguments not right!" << std::endl;
+        std::cerr << "run 'python3 yolox/deploy/trt.py -n yolox-{tiny, s, m, l, x}' to serialize model first!" << std::endl;
+        std::cerr << "Then use the following command:" << std::endl;
+        std::cerr << "./yolox ../model_trt.engine -i ../../../assets/dog.jpg  // deserialize file and run inference" << std::endl;
+        return -1;
     }
+    const std::string input_image_path {argv[3]};
+
+    //std::vector<std::string> file_names;
+    //if (read_files_in_dir(argv[2], file_names) < 0) {
+        //std::cout << "read_files_in_dir failed." << std::endl;
+        //return -1;
+    //}
+
+    IRuntime* runtime = createInferRuntime(gLogger);
+    assert(runtime != nullptr);
+    ICudaEngine* engine = runtime->deserializeCudaEngine(trtModelStream, size);
+    assert(engine != nullptr); 
+    IExecutionContext* context = engine->createExecutionContext();
+    assert(context != nullptr);
+    delete[] trtModelStream;
+    auto out_dims = engine->getBindingDimensions(1);
+    auto output_size = 1;
+    for(int j=0;j<out_dims.nbDims;j++) {
+        output_size *= out_dims.d[j];
+    }
+    static float* prob = new float[output_size];
+
+    cv::Mat img = cv::imread(input_image_path);
+    int img_w = img.cols;
+    int img_h = img.rows;
+    cv::Mat pr_img = static_resize(img);
+    std::cout << pr_img.size() <<std::endl;//(416,416)padding，非padding是16：9的比例
+    std::cout << "blob image" << std::endl;
+
+    float* blob;
+    blob = blobFromImage(pr_img);//unsigned -> float
+    float scale = std::min(INPUT_W / (img.cols*1.0), INPUT_H / (img.rows*1.0));
+
+    // run inference
+    auto start = std::chrono::system_clock::now();
+    doInference(*context, blob, prob, output_size, pr_img.size());//out:prob
+    std::cout<<output_size<<std::endl;
+    auto end = std::chrono::system_clock::now();
+    std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "ms" << std::endl;
+
+    std::vector<Object> objects;
+    decode_outputs(prob, objects, scale, img_w, img_h);
+    draw_objects(img, objects, input_image_path);
+    // delete the pointer to the float
+    delete blob;
+    // destroy the engine
+    context->destroy();
+    engine->destroy();
+    runtime->destroy();
     return 0;
 }

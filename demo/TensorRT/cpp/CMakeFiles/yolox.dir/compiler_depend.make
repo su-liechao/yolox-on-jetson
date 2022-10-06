@@ -417,8 +417,133 @@ CMakeFiles/yolox.dir/yolox.cpp.o: yolox.cpp \
   /usr/include/aarch64-linux-gnu/NvInferImpl.h \
   logging.h \
   /usr/include/aarch64-linux-gnu/NvInferRuntimeCommon.h \
-  /usr/include/c++/9/cassert
+  /usr/include/c++/9/cassert \
+  /usr/local/include/jetson-utils/videoSource.h \
+  /usr/local/include/jetson-utils/videoOptions.h \
+  /usr/local/include/jetson-utils/imageFormat.h \
+  /usr/local/include/jetson-utils/cudaUtility.h \
+  /usr/local/cuda-11.4/include/cuda_runtime.h \
+  /usr/local/cuda-11.4/include/crt/host_config.h \
+  /usr/local/cuda-11.4/include/library_types.h \
+  /usr/local/cuda-11.4/include/channel_descriptor.h \
+  /usr/local/cuda-11.4/include/cuda_runtime_api.h \
+  /usr/local/cuda-11.4/include/driver_functions.h \
+  /usr/local/cuda-11.4/include/vector_functions.h \
+  /usr/local/cuda-11.4/include/vector_functions.hpp \
+  /usr/local/cuda-11.4/include/cuda.h \
+  /usr/local/include/jetson-utils/logging.h \
+  /usr/local/include/jetson-utils/commandLine.h \
+  /usr/local/include/jetson-utils/imageFormat.inl \
+  /usr/local/include/jetson-utils/URI.h \
+  /usr/local/include/jetson-utils/videoOutput.h \
+  /usr/local/include/jetson-utils/cudaFont.h \
+  /usr/include/signal.h \
+  /usr/include/aarch64-linux-gnu/bits/signum.h \
+  /usr/include/aarch64-linux-gnu/bits/signum-generic.h \
+  /usr/include/aarch64-linux-gnu/bits/types/sig_atomic_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/siginfo_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/__sigval_t.h \
+  /usr/include/aarch64-linux-gnu/bits/siginfo-arch.h \
+  /usr/include/aarch64-linux-gnu/bits/siginfo-consts.h \
+  /usr/include/aarch64-linux-gnu/bits/siginfo-consts-arch.h \
+  /usr/include/aarch64-linux-gnu/bits/types/sigval_t.h \
+  /usr/include/aarch64-linux-gnu/bits/types/sigevent_t.h \
+  /usr/include/aarch64-linux-gnu/bits/sigevent-consts.h \
+  /usr/include/aarch64-linux-gnu/bits/sigaction.h \
+  /usr/include/aarch64-linux-gnu/bits/sigcontext.h \
+  /usr/include/aarch64-linux-gnu/asm/sigcontext.h \
+  /usr/include/linux/types.h \
+  /usr/include/aarch64-linux-gnu/asm/types.h \
+  /usr/include/asm-generic/types.h \
+  /usr/include/asm-generic/int-ll64.h \
+  /usr/include/aarch64-linux-gnu/asm/bitsperlong.h \
+  /usr/include/asm-generic/bitsperlong.h \
+  /usr/include/linux/posix_types.h \
+  /usr/include/linux/stddef.h \
+  /usr/include/aarch64-linux-gnu/asm/posix_types.h \
+  /usr/include/asm-generic/posix_types.h \
+  /usr/include/aarch64-linux-gnu/asm/sve_context.h \
+  /usr/include/aarch64-linux-gnu/bits/types/stack_t.h \
+  /usr/include/aarch64-linux-gnu/sys/ucontext.h \
+  /usr/include/aarch64-linux-gnu/sys/procfs.h \
+  /usr/include/aarch64-linux-gnu/sys/time.h \
+  /usr/include/aarch64-linux-gnu/sys/user.h \
+  /usr/include/aarch64-linux-gnu/bits/procfs.h \
+  /usr/include/aarch64-linux-gnu/bits/procfs-id.h \
+  /usr/include/aarch64-linux-gnu/bits/procfs-prregset.h \
+  /usr/include/aarch64-linux-gnu/bits/procfs-extra.h \
+  /usr/include/aarch64-linux-gnu/bits/sigstack.h \
+  /usr/include/aarch64-linux-gnu/bits/ss_flags.h \
+  /usr/include/aarch64-linux-gnu/bits/types/struct_sigstack.h \
+  /usr/include/aarch64-linux-gnu/bits/sigthread.h \
+  /usr/include/aarch64-linux-gnu/bits/signal_ext.h
 
+
+/usr/include/aarch64-linux-gnu/bits/signal_ext.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/struct_sigstack.h:
+
+/usr/include/aarch64-linux-gnu/bits/procfs-extra.h:
+
+/usr/include/aarch64-linux-gnu/bits/procfs-id.h:
+
+/usr/include/aarch64-linux-gnu/sys/procfs.h:
+
+/usr/include/aarch64-linux-gnu/sys/ucontext.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/stack_t.h:
+
+/usr/include/aarch64-linux-gnu/asm/sve_context.h:
+
+/usr/include/asm-generic/posix_types.h:
+
+/usr/include/linux/stddef.h:
+
+/usr/include/linux/posix_types.h:
+
+/usr/include/aarch64-linux-gnu/asm/bitsperlong.h:
+
+/usr/include/aarch64-linux-gnu/asm/sigcontext.h:
+
+/usr/include/aarch64-linux-gnu/bits/sigcontext.h:
+
+/usr/include/aarch64-linux-gnu/bits/sigaction.h:
+
+/usr/include/aarch64-linux-gnu/bits/sigevent-consts.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/sigevent_t.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/sigval_t.h:
+
+/usr/include/aarch64-linux-gnu/bits/siginfo-consts-arch.h:
+
+/usr/include/aarch64-linux-gnu/bits/siginfo-consts.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/__sigval_t.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/siginfo_t.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/sig_atomic_t.h:
+
+/usr/include/aarch64-linux-gnu/bits/signum-generic.h:
+
+/usr/include/aarch64-linux-gnu/bits/signum.h:
+
+/usr/include/signal.h:
+
+/usr/local/include/jetson-utils/videoOutput.h:
+
+/usr/local/include/jetson-utils/imageFormat.inl:
+
+/usr/local/include/jetson-utils/commandLine.h:
+
+/usr/local/cuda-11.4/include/library_types.h:
+
+/usr/local/cuda-11.4/include/crt/host_config.h:
+
+/usr/local/cuda-11.4/include/cuda_runtime.h:
+
+/usr/local/include/jetson-utils/imageFormat.h:
 
 /usr/include/c++/9/cassert:
 
@@ -478,6 +603,8 @@ logging.h:
 
 /usr/include/opencv4/opencv2/photo.hpp:
 
+/usr/local/include/jetson-utils/cudaUtility.h:
+
 /usr/include/opencv4/opencv2/ml/ml.inl.hpp:
 
 /usr/include/opencv4/opencv2/ml.hpp:
@@ -490,6 +617,8 @@ logging.h:
 
 /usr/include/c++/9/bits/locale_conv.h:
 
+/usr/local/include/jetson-utils/URI.h:
+
 /usr/include/c++/9/bits/locale_facets_nonio.h:
 
 /usr/include/c++/9/locale:
@@ -498,6 +627,8 @@ logging.h:
 
 /usr/include/opencv4/opencv2/flann/lsh_table.h:
 
+/usr/local/cuda-11.4/include/vector_functions.hpp:
+
 /usr/include/c++/9/streambuf:
 
 /usr/include/aarch64-linux-gnu/c++/9/bits/time_members.h:
@@ -505,6 +636,8 @@ logging.h:
 /usr/include/c++/9/bits/streambuf_iterator.h:
 
 /usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:
+
+/usr/local/cuda-11.4/include/vector_functions.h:
 
 /usr/include/c++/9/array:
 
@@ -523,6 +656,8 @@ logging.h:
 /usr/include/c++/9/system_error:
 
 /usr/include/aarch64-linux-gnu/bits/stdio.h:
+
+/usr/local/include/jetson-utils/logging.h:
 
 /usr/include/c++/9/backward/binders.h:
 
@@ -558,11 +693,15 @@ logging.h:
 
 /usr/include/opencv4/opencv2/core/matx.hpp:
 
+/usr/include/aarch64-linux-gnu/bits/siginfo-arch.h:
+
 /usr/include/aarch64-linux-gnu/bits/types/__sigset_t.h:
 
 /usr/include/aarch64-linux-gnu/bits/wchar.h:
 
 /usr/include/aarch64-linux-gnu/bits/stdio2.h:
+
+/usr/local/cuda-11.4/include/channel_descriptor.h:
 
 /usr/include/c++/9/bits/locale_facets.tcc:
 
@@ -648,6 +787,8 @@ logging.h:
 
 /usr/include/c++/9/cctype:
 
+/usr/include/aarch64-linux-gnu/bits/sigstack.h:
+
 /usr/include/aarch64-linux-gnu/bits/types/struct_itimerspec.h:
 
 /usr/include/aarch64-linux-gnu/bits/cpu-set.h:
@@ -664,6 +805,8 @@ logging.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/time_t.h:
 
+/usr/include/aarch64-linux-gnu/asm/posix_types.h:
+
 /usr/include/opencv4/opencv2/opencv_modules.hpp:
 
 /usr/include/aarch64-linux-gnu/sys/select.h:
@@ -679,6 +822,8 @@ logging.h:
 /usr/include/c++/9/bits/std_abs.h:
 
 /usr/include/c++/9/ext/atomicity.h:
+
+/usr/include/aarch64-linux-gnu/sys/time.h:
 
 /usr/include/c++/9/map:
 
@@ -744,6 +889,8 @@ yolox.cpp:
 
 /usr/include/c++/9/bits/allocator.h:
 
+/usr/include/asm-generic/int-ll64.h:
+
 /usr/include/linux/errno.h:
 
 /usr/include/ctype.h:
@@ -765,6 +912,8 @@ yolox.cpp:
 /usr/include/c++/9/vector:
 
 /usr/include/c++/9/exception:
+
+/usr/include/asm-generic/types.h:
 
 /usr/include/c++/9/bits/stl_function.h:
 
@@ -804,6 +953,8 @@ yolox.cpp:
 
 /usr/include/c++/9/bits/char_traits.h:
 
+/usr/local/include/jetson-utils/cudaFont.h:
+
 /usr/include/aarch64-linux-gnu/c++/9/bits/gthr-default.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/timer_t.h:
@@ -817,6 +968,8 @@ yolox.cpp:
 /usr/include/c++/9/ios:
 
 /usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h:
+
+/usr/include/aarch64-linux-gnu/bits/procfs.h:
 
 /usr/include/stdc-predef.h:
 
@@ -855,6 +1008,10 @@ yolox.cpp:
 /usr/include/aarch64-linux-gnu/bits/stdint-intn.h:
 
 /usr/include/c++/9/bits/cxxabi_init_exception.h:
+
+/usr/include/aarch64-linux-gnu/bits/sigthread.h:
+
+/usr/include/aarch64-linux-gnu/asm/types.h:
 
 /usr/include/aarch64-linux-gnu/bits/libc-header-start.h:
 
@@ -942,6 +1099,8 @@ yolox.cpp:
 
 /usr/include/c++/9/ostream:
 
+/usr/local/cuda-11.4/include/cuda.h:
+
 /usr/include/c++/9/bits/fstream.tcc:
 
 /usr/include/c++/9/iostream:
@@ -970,9 +1129,13 @@ yolox.cpp:
 
 /usr/include/c++/9/bits/stl_raw_storage_iter.h:
 
+/usr/local/include/jetson-utils/videoSource.h:
+
 /usr/include/aarch64-linux-gnu/bits/types/locale_t.h:
 
 /usr/include/c++/9/bits/stl_vector.h:
+
+/usr/include/aarch64-linux-gnu/sys/user.h:
 
 /usr/include/c++/9/bits/basic_string.tcc:
 
@@ -1036,6 +1199,8 @@ yolox.cpp:
 
 /usr/include/c++/9/bits/stl_heap.h:
 
+/usr/local/include/jetson-utils/videoOptions.h:
+
 /usr/include/opencv4/opencv2/core/affine.hpp:
 
 /usr/include/c++/9/bits/stl_tempbuf.h:
@@ -1080,6 +1245,8 @@ yolox.cpp:
 
 /usr/include/opencv4/opencv2/flann/composite_index.h:
 
+/usr/include/aarch64-linux-gnu/bits/procfs-prregset.h:
+
 /usr/include/stdint.h:
 
 /usr/include/aarch64-linux-gnu/bits/flt-eval-method.h:
@@ -1095,6 +1262,8 @@ yolox.cpp:
 /usr/include/aarch64-linux-gnu/bits/iscanonical.h:
 
 /usr/include/aarch64-linux-gnu/bits/mathinline.h:
+
+/usr/include/asm-generic/bitsperlong.h:
 
 /usr/include/opencv4/opencv2/videoio.hpp:
 
@@ -1170,6 +1339,8 @@ yolox.cpp:
 
 /usr/include/opencv4/opencv2/dnn.hpp:
 
+/usr/include/aarch64-linux-gnu/bits/ss_flags.h:
+
 /usr/include/opencv4/opencv2/dnn/dnn.hpp:
 
 /usr/include/c++/9/bits/codecvt.h:
@@ -1183,6 +1354,8 @@ yolox.cpp:
 /usr/include/c++/9/ctime:
 
 /usr/include/c++/9/bits/stl_multiset.h:
+
+/usr/local/cuda-11.4/include/driver_functions.h:
 
 /usr/include/opencv4/opencv2/flann/defines.h:
 
@@ -1217,6 +1390,8 @@ yolox.cpp:
 /usr/include/c++/9/set:
 
 /usr/include/opencv4/opencv2/flann/all_indices.h:
+
+/usr/include/linux/types.h:
 
 /usr/include/c++/9/climits:
 

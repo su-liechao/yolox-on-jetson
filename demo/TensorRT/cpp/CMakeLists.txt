@@ -9,7 +9,6 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_BUILD_TYPE Debug)
 
 find_package(CUDA REQUIRED)
-
 include_directories(${PROJECT_SOURCE_DIR}/include)
 # include and link dirs of cuda and tensorrt, you need adapt them if yours are different
 # cuda
@@ -22,6 +21,8 @@ link_directories(/usr/local/cuda-11.4/lib64)
 include_directories(/data/cuda/cuda-10.2/TensorRT/v7.2.1.6/include)
 link_directories(/data/cuda/cuda-10.2/TensorRT/v7.2.1.6/lib)
 
+include_directories(/usr/local/include/jetson-utils)
+link_directories(/usr/local/lib)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Ofast -Wfatal-errors -D_MWAITXINTRIN_H_INCLUDED")
 
 find_package(OpenCV)
@@ -31,6 +32,8 @@ add_executable(yolox ${PROJECT_SOURCE_DIR}/yolox.cpp)
 target_link_libraries(yolox nvinfer)
 target_link_libraries(yolox cudart)
 target_link_libraries(yolox ${OpenCV_LIBS})
+target_link_libraries(yolox jetson-utils)
+target_link_libraries(yolox jetson-inference)
 
 add_definitions(-O2 -pthread)
 
